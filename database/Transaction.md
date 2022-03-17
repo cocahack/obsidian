@@ -1,3 +1,6 @@
+---
+aliases: [트랜잭션]
+---
 # Transaction
 
 ## 개념
@@ -23,5 +26,7 @@ RDBMS에서 트랜잭션은 ACID 속성을 만족한다.
 
 [MongoDB Transaction](https://docs.mongodb.com/manual/core/transactions/)
 
+---
+#db #transaction 
 
 

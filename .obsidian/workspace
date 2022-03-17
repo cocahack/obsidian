@@ -4,27 +4,40 @@
     "type": "split",
     "children": [
       {
-        "id": "490ad87b3bf1e25f",
+        "id": "1032b6263be1c982",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "database/Isolation.md",
+            "mode": "source"
+          }
+        },
+        "group": "c83c8b8beedd8ff2"
+      },
+      {
+        "id": "4aeab5f3a27d8c51",
         "type": "split",
         "children": [
           {
-            "id": "1032b6263be1c982",
+            "id": "3cf803662015e1e3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
-                "mode": "source"
+                "file": "database/Isolation.md",
+                "mode": "preview"
               }
-            }
+            },
+            "group": "c83c8b8beedd8ff2"
           },
           {
-            "id": "eccca15b5f47a70d",
+            "id": "5905a268700e3608",
             "type": "leaf",
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "README.md",
+                "file": "database/Isolation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -47,7 +60,7 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 0.9865746068785918,
+                  "scale": 1,
                   "close": false
                 }
               }
@@ -110,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "database/Isolation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,23 +133,32 @@
                 "unlinkedCollapsed": true
               }
             }
+          },
+          {
+            "id": "9321e426357736e4",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 303.5
   },
   "active": "1032b6263be1c982",
   "lastOpenFiles": [
+    "database/Isolation.md",
+    "database/Transaction.md",
+    "database/Write skew.md",
     "README.md",
-    "My Knowledge/Write skew.md",
-    "My Knowledge/Transaction.md",
-    "My Knowledge/Isolation.md",
-    "Synchronization/Race condition.md",
-    "Synchronization/Parallelism.md",
-    "My Knowledge/Materializing conflict.md",
-    "Synchronization/Concurrency.md",
-    "무제노트.md"
+    "infrastructure/storage/iSCSI.md",
+    "infrastructure/storage/NAS.md",
+    "infrastructure/virtualization/Live migration(QEMU).md",
+    "infrastructure/virtualization/KVM.md",
+    "infrastructure/virtualization/QEMU.md",
+    "infrastructure/무제노트.md"
   ]
 }
