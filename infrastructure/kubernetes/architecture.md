@@ -43,5 +43,13 @@
 - 컨테이너 자원 모니터링
 - 로깅 
 
+## References
+
+[k8s components overview](https://kubernetes.io/docs/concepts/overview/components/)
+
+---
+
+#k8s
+
 
 
