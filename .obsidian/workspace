@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "database/Isolation.md",
+            "file": "infrastructure/kubernetes/cheatsheet.md",
             "mode": "source"
           }
         }
@@ -22,7 +22,7 @@
         "state": {
           "type": "localgraph",
           "state": {
-            "file": "database/Isolation.md",
+            "file": "infrastructure/kubernetes/cheatsheet.md",
             "options": {
               "collapse-filter": true,
               "search": "",
@@ -45,7 +45,7 @@
               "repelStrength": 10,
               "linkStrength": 1,
               "linkDistance": 250,
-              "scale": 0.672711706769548,
+              "scale": 1.1009181658793397,
               "close": false
             }
           }
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "database/Isolation.md",
+                "file": "infrastructure/kubernetes/cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,15 +132,15 @@
   },
   "active": "1032b6263be1c982",
   "lastOpenFiles": [
+    "infrastructure/kubernetes/cheatsheet.md",
+    "infrastructure/kubernetes/architecture.md",
+    "무제노트.md",
+    "infrastructure/무제노트.md",
     "database/Isolation.md",
     "database/Lock.md",
     "database/Lost Updates.md",
     "database/Materializing conflict.md",
     "database/MVCC.md",
-    "database/Write skew.md",
-    "database/Transaction.md",
-    "devops/jenkins/backup.md",
-    "resources/images/jenkins-backup-01.png",
-    "README.md"
+    "database/Write skew.md"
   ]
 }
