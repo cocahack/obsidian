@@ -6,68 +6,50 @@
       {
         "id": "1032b6263be1c982",
         "type": "leaf",
+        "dimension": 82.55874673629243,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "infrastructure/virtualization/QEMU.md",
+            "file": "database/Isolation.md",
             "mode": "source"
           }
-        },
-        "group": "c83c8b8beedd8ff2"
+        }
       },
       {
-        "id": "4aeab5f3a27d8c51",
-        "type": "split",
-        "children": [
-          {
-            "id": "3cf803662015e1e3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "infrastructure/virtualization/QEMU.md",
-                "mode": "preview"
-              }
-            },
-            "group": "c83c8b8beedd8ff2"
-          },
-          {
-            "id": "5905a268700e3608",
-            "type": "leaf",
-            "state": {
-              "type": "localgraph",
-              "state": {
-                "file": "infrastructure/virtualization/QEMU.md",
-                "options": {
-                  "collapse-filter": true,
-                  "search": "",
-                  "localJumps": 1,
-                  "localBacklinks": true,
-                  "localForelinks": true,
-                  "localInterlinks": false,
-                  "showTags": false,
-                  "showAttachments": false,
-                  "hideUnresolved": false,
-                  "collapse-color-groups": true,
-                  "colorGroups": [],
-                  "collapse-display": true,
-                  "showArrow": false,
-                  "textFadeMultiplier": 0,
-                  "nodeSizeMultiplier": 1,
-                  "lineSizeMultiplier": 1,
-                  "collapse-forces": true,
-                  "centerStrength": 0.518713248970312,
-                  "repelStrength": 10,
-                  "linkStrength": 1,
-                  "linkDistance": 250,
-                  "scale": 1,
-                  "close": false
-                }
-              }
+        "id": "5905a268700e3608",
+        "type": "leaf",
+        "dimension": 17.44125326370757,
+        "state": {
+          "type": "localgraph",
+          "state": {
+            "file": "database/Isolation.md",
+            "options": {
+              "collapse-filter": true,
+              "search": "",
+              "localJumps": 1,
+              "localBacklinks": true,
+              "localForelinks": true,
+              "localInterlinks": false,
+              "showTags": false,
+              "showAttachments": false,
+              "hideUnresolved": false,
+              "collapse-color-groups": true,
+              "colorGroups": [],
+              "collapse-display": true,
+              "showArrow": false,
+              "textFadeMultiplier": 0,
+              "nodeSizeMultiplier": 1,
+              "lineSizeMultiplier": 1,
+              "collapse-forces": true,
+              "centerStrength": 0.518713248970312,
+              "repelStrength": 10,
+              "linkStrength": 1,
+              "linkDistance": 250,
+              "scale": 0.672711706769548,
+              "close": false
             }
           }
-        ],
-        "direction": "horizontal"
+        }
       }
     ],
     "direction": "vertical"
@@ -123,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "infrastructure/virtualization/QEMU.md",
+                "file": "database/Isolation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,15 +132,15 @@
   },
   "active": "1032b6263be1c982",
   "lastOpenFiles": [
-    "infrastructure/virtualization/QEMU.md",
-    "README.md",
     "database/Isolation.md",
-    "database/Transaction.md",
+    "database/Lock.md",
+    "database/Lost Updates.md",
+    "database/Materializing conflict.md",
+    "database/MVCC.md",
     "database/Write skew.md",
-    "infrastructure/storage/iSCSI.md",
-    "infrastructure/storage/NAS.md",
-    "infrastructure/virtualization/Live migration(QEMU).md",
-    "infrastructure/virtualization/KVM.md",
-    "infrastructure/무제노트.md"
+    "database/Transaction.md",
+    "devops/jenkins/backup.md",
+    "resources/images/jenkins-backup-01.png",
+    "README.md"
   ]
 }

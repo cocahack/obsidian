@@ -16,4 +16,4 @@ aliases: [쓰기 스큐]
 
 
 ---
-#db #transaction #isolation
+#db #transaction #isolation #phantom
