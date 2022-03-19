@@ -43,6 +43,22 @@
 - 컨테이너 자원 모니터링
 - 로깅 
 
+## 오브젝트와 컨트롤러
+
+유저는 템플릿 등으로 쿠버네티스에 자원이 어떻게 되었으면 좋겠다라는 'desired state'를 정의하고 컨트롤러는 desired state와 현재 상태가 일치하도록 오브젝트들을 생성/삭제한다. 
+
+- 오브젝트
+	- [[pod]]
+	- service
+	- volume
+	- [[namespace]]
+- 컨트롤러
+	- [[ReplicaSet]]
+	- Deployment
+	- StatefulSet
+	- DaemonSet
+	- Job
+
 ## References
 
 [k8s components overview](https://kubernetes.io/docs/concepts/overview/components/)

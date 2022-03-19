@@ -4,50 +4,13 @@
     "type": "split",
     "children": [
       {
-        "id": "1032b6263be1c982",
+        "id": "971679df09ac987e",
         "type": "leaf",
-        "dimension": 82.55874673629243,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "infrastructure/kubernetes/architecture.md",
+            "file": "infrastructure/kubernetes/template.md",
             "mode": "source"
-          }
-        }
-      },
-      {
-        "id": "5905a268700e3608",
-        "type": "leaf",
-        "dimension": 17.44125326370757,
-        "state": {
-          "type": "localgraph",
-          "state": {
-            "file": "infrastructure/kubernetes/architecture.md",
-            "options": {
-              "collapse-filter": true,
-              "search": "",
-              "localJumps": 1,
-              "localBacklinks": true,
-              "localForelinks": true,
-              "localInterlinks": false,
-              "showTags": false,
-              "showAttachments": false,
-              "hideUnresolved": false,
-              "collapse-color-groups": true,
-              "colorGroups": [],
-              "collapse-display": true,
-              "showArrow": false,
-              "textFadeMultiplier": 0,
-              "nodeSizeMultiplier": 1,
-              "lineSizeMultiplier": 1,
-              "collapse-forces": true,
-              "centerStrength": 0.518713248970312,
-              "repelStrength": 10,
-              "linkStrength": 1,
-              "linkDistance": 250,
-              "scale": 1.1009181658793397,
-              "close": false
-            }
           }
         }
       }
@@ -105,14 +68,14 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "infrastructure/kubernetes/architecture.md",
+                "file": "infrastructure/kubernetes/template.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               }
             }
           },
@@ -130,17 +93,17 @@
     "direction": "horizontal",
     "width": 303.5
   },
-  "active": "1032b6263be1c982",
+  "active": "971679df09ac987e",
   "lastOpenFiles": [
-    "infrastructure/kubernetes/architecture.md",
+    "infrastructure/kubernetes/template.md",
+    "infrastructure/kubernetes/architecture/replicaset.md",
     "infrastructure/kubernetes/cheatsheet.md",
+    "infrastructure/kubernetes/architecture/architecture.md",
+    "infrastructure/kubernetes/architecture/namespace.md",
+    "infrastructure/kubernetes/architecture/pod.md",
+    "README.md",
     "무제노트.md",
-    "infrastructure/무제노트.md",
     "database/Isolation.md",
-    "database/Lock.md",
-    "database/Lost Updates.md",
-    "database/Materializing conflict.md",
-    "database/MVCC.md",
-    "database/Write skew.md"
+    "database/Lock.md"
   ]
 }
