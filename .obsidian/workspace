@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "971679df09ac987e",
+        "id": "ea5028988342fac7",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "infrastructure/kubernetes/template.md",
+            "file": "kafka/topic.md",
             "mode": "source"
           }
         }
@@ -39,7 +39,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "core-concept",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "infrastructure/kubernetes/template.md",
+                "file": "kafka/topic.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,17 +93,17 @@
     "direction": "horizontal",
     "width": 303.5
   },
-  "active": "971679df09ac987e",
+  "active": "ea5028988342fac7",
   "lastOpenFiles": [
-    "infrastructure/kubernetes/template.md",
-    "infrastructure/kubernetes/architecture/replicaset.md",
-    "infrastructure/kubernetes/cheatsheet.md",
-    "infrastructure/kubernetes/architecture/architecture.md",
-    "infrastructure/kubernetes/architecture/namespace.md",
-    "infrastructure/kubernetes/architecture/pod.md",
+    "kafka/topic.md",
     "README.md",
-    "무제노트.md",
+    "infrastructure/kubernetes/core-concepts/deployment.md",
+    "infrastructure/kubernetes/core-concepts/pod.md",
+    "infrastructure/kubernetes/core-concepts/replicaset.md",
+    "infrastructure/kubernetes/cheatsheet.md",
+    "infrastructure/kubernetes/core-concepts/architecture.md",
+    "infrastructure/kubernetes/core-concepts/namespace.md",
     "database/Isolation.md",
-    "database/Lock.md"
+    "infrastructure/kubernetes/template.md"
   ]
 }

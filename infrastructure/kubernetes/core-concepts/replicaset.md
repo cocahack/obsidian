@@ -50,3 +50,6 @@ spec:
 2. 커맨드로 수정
 	- `kubectl scale --replicas=6 -f template.yml` 또는 
 	- `kubectl scale --replicas=6 replicaset my-replica-set`
+	
+---
+#k8s 

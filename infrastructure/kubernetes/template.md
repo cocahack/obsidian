@@ -47,7 +47,7 @@ nginx 컨테이너를 가지는 파드를 세 개 생성하게 될 것이다. �
 $ kubectl create -f rep-ctrl-def.yml
 ```
 
-### 예시 - [[ReplicaSet]]
+### 예시 - [[replicaset]]
 
 ```yaml 
 apiVersion: apps/v1
@@ -83,3 +83,4 @@ spec:
 
 ---
 #k8s 
+

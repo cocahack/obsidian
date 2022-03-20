@@ -53,7 +53,7 @@
 	- volume
 	- [[namespace]]
 - 컨트롤러
-	- [[ReplicaSet]]
+	- [[replicaset]]
 	- Deployment
 	- StatefulSet
 	- DaemonSet
