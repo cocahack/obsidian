@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "kafka/topic.md",
+            "file": "kafka/main-concepts.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "kafka/topic.md",
+                "file": "kafka/main-concepts.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,7 +95,7 @@
   },
   "active": "ea5028988342fac7",
   "lastOpenFiles": [
-    "kafka/topic.md",
+    "kafka/main-concepts.md",
     "README.md",
     "infrastructure/kubernetes/core-concepts/deployment.md",
     "infrastructure/kubernetes/core-concepts/pod.md",
