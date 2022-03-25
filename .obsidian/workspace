@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "kafka/main-concepts.md",
+            "file": "infrastructure/kubernetes/core-concepts/namespace.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "kafka/main-concepts.md",
+                "file": "infrastructure/kubernetes/core-concepts/namespace.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,14 +95,14 @@
   },
   "active": "ea5028988342fac7",
   "lastOpenFiles": [
-    "kafka/main-concepts.md",
-    "README.md",
+    "infrastructure/kubernetes/core-concepts/namespace.md",
     "infrastructure/kubernetes/core-concepts/deployment.md",
+    "infrastructure/kubernetes/core-concepts/architecture.md",
     "infrastructure/kubernetes/core-concepts/pod.md",
     "infrastructure/kubernetes/core-concepts/replicaset.md",
+    "kafka/main-concepts.md",
+    "README.md",
     "infrastructure/kubernetes/cheatsheet.md",
-    "infrastructure/kubernetes/core-concepts/architecture.md",
-    "infrastructure/kubernetes/core-concepts/namespace.md",
     "database/Isolation.md",
     "infrastructure/kubernetes/template.md"
   ]
