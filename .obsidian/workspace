@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "dfcedfcc941eccce",
+        "id": "5f3f0855e48bb83f",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -93,17 +93,17 @@
     "direction": "horizontal",
     "width": 303.5
   },
-  "active": "dfcedfcc941eccce",
+  "active": "5f3f0855e48bb83f",
   "lastOpenFiles": [
     "kafka/producer-consumer.md",
+    "resources/images/jenkins-backup-01.png",
+    "resources/images/kafka-producer.png",
     "kafka/main-concepts.md",
     "infrastructure/kubernetes/core-concepts/namespace.md",
     "infrastructure/kubernetes/core-concepts/deployment.md",
     "infrastructure/kubernetes/core-concepts/architecture.md",
     "infrastructure/kubernetes/core-concepts/pod.md",
     "infrastructure/kubernetes/core-concepts/replicaset.md",
-    "README.md",
-    "infrastructure/kubernetes/cheatsheet.md",
-    "database/Isolation.md"
+    "README.md"
   ]
 }
