@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "kafka/producer-consumer.md",
+            "file": "spring/enabledif.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "kafka/producer-consumer.md",
+                "file": "spring/enabledif.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,6 +95,7 @@
   },
   "active": "5f3f0855e48bb83f",
   "lastOpenFiles": [
+    "spring/enabledif.md",
     "kafka/producer-consumer.md",
     "resources/images/jenkins-backup-01.png",
     "resources/images/kafka-producer.png",
@@ -103,7 +104,6 @@
     "infrastructure/kubernetes/core-concepts/deployment.md",
     "infrastructure/kubernetes/core-concepts/architecture.md",
     "infrastructure/kubernetes/core-concepts/pod.md",
-    "infrastructure/kubernetes/core-concepts/replicaset.md",
-    "README.md"
+    "infrastructure/kubernetes/core-concepts/replicaset.md"
   ]
 }
