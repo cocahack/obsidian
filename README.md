@@ -3,6 +3,8 @@
 
 ## Index
 
+> 아래 링크들은 옵시디언에서만 유효합니다.
+
 - architecture
 - CS
 	- Synchronization
