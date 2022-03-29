@@ -27,3 +27,4 @@
 		- [ ] QEMU
 - languages
 - spring
+	- [conditional test execution](spring/enabledif)

@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "spring/enabledif.md",
-            "mode": "source"
+            "file": "README.md",
+            "mode": "preview"
           }
         }
       }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "spring/enabledif.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,6 +95,7 @@
   },
   "active": "5f3f0855e48bb83f",
   "lastOpenFiles": [
+    "README.md",
     "spring/enabledif.md",
     "kafka/producer-consumer.md",
     "resources/images/jenkins-backup-01.png",
@@ -103,7 +104,6 @@
     "infrastructure/kubernetes/core-concepts/namespace.md",
     "infrastructure/kubernetes/core-concepts/deployment.md",
     "infrastructure/kubernetes/core-concepts/architecture.md",
-    "infrastructure/kubernetes/core-concepts/pod.md",
-    "infrastructure/kubernetes/core-concepts/replicaset.md"
+    "infrastructure/kubernetes/core-concepts/pod.md"
   ]
 }
