@@ -1,29 +1,25 @@
 {
   "main": {
-    "id": "af7087cfc32fa372",
+    "id": "3203c12a869583cf",
     "type": "split",
     "children": [
       {
-        "id": "b07943312adfd640",
+        "id": "002f11d0c7658db0",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Isolation.md",
-            "mode": "source",
-            "source": false
-          }
+          "type": "graph",
+          "state": {}
         }
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "62742ac6d3d4219e",
+    "id": "42e037137fdfb501",
     "type": "mobile-drawer",
     "children": [
       {
-        "id": "1624a83d168ca512",
+        "id": "5fb1430f0fdbb958",
         "type": "leaf",
         "state": {
           "type": "file-explorer",
@@ -31,7 +27,7 @@
         }
       },
       {
-        "id": "d34c249398a7c9f8",
+        "id": "8758da8f0e0b4a93",
         "type": "leaf",
         "state": {
           "type": "search",
@@ -49,16 +45,15 @@
     "currentTab": 0
   },
   "right": {
-    "id": "7ed03e1468b94064",
+    "id": "5cd5d219a3da8fcb",
     "type": "mobile-drawer",
     "children": [
       {
-        "id": "fe85a1ed7f786627",
+        "id": "c2f45db47f894b2f",
         "type": "leaf",
         "state": {
           "type": "backlink",
           "state": {
-            "file": "Isolation.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -72,11 +67,8 @@
     ],
     "currentTab": 0
   },
-  "active": "b07943312adfd640",
+  "active": "002f11d0c7658db0",
   "lastOpenFiles": [
-    "Isolation.md",
-    "MVCC.md",
-    "Transaction.md",
-    "Write skew.md"
+    "메모.md"
   ]
 }
