@@ -368,4 +368,14 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+### Obsidian ###
+._*
+.Spotlight-V100
+**/.Trashes
+**/.trash
+ehthumbs.db
+Thumbs.db
+**/.obsidian
+*.css
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,intellij,java,node,macos,linux,windows
