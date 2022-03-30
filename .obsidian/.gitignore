@@ -168,9 +168,9 @@ replay_pid*
 
 ### macOS ###
 # General
-.DS_Store
-.AppleDouble
-.LSOverride
+**/.DS_Store
+**/.AppleDouble
+**/.LSOverride
 
 # Icon must end with two \r
 Icon
@@ -399,5 +399,9 @@ gradle-app.setting
 
 # and uncomment the following lines
 # .pnp.*
+
+### obsidian ###
+**/.obsidian
+**/.Trash
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,macos,linux,windows,java,kotlin,node,yarn
