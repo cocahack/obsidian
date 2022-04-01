@@ -8,7 +8,7 @@
 
 JUnit5을 사용하는 스프링 테스트 환경에서는 `@EnabledIf`또는 `@DisabldIf`을 사용하도록 변경되었다. 
 
-> ![WARN]
+> [!warning]
 > JUnit5 에도  `@EnabledIf`와 `@DisabldIf`를 이름으로 하는 애노테이션이 생겼기 때문에, 스프링의 기능을 이용하고 싶다면 패키지명을 잘 확인하고 import 해야 한다.
 
 ## 사용법
