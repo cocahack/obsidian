@@ -66,6 +66,34 @@ class FluxCreation {
 }
 ```
 
+## Transform
+
+데이터를 변환하는 오퍼레이터 `map` 과 `flatMap` 이 있다.
+
+`map` 은 레이턴시가 존재하지 않을 것이라고 예상되는 변환을 1:1로 실행할 때 사용한다.
+
+반면 `flatMap` 은 레이턴시가 존재할 것 같은 변환을 적용할 때 사용한다. 레이턴시가 존재한다면 비동기적으로 실행해야 하며, 따라서 반환 타입은 `Mono` 나 `Flux` 가 될 것이다. 따라서 `flatMap` 은 `Publisher<T>` 를 반환하는 `Function` 타입을 파라미터로 한다. 
+
+만약 `map` 이었다면 반환되는 타입은 `Flux<Publisher<T>>` 가 될 것이며, 이것을 다루기는 매우 불편 할 것이다. 그러나 `flatMap` 은 내부의 `Publisher` 들을 구독하고 이를 하나의 전역적인 결과로 병합할 수 있다. 단, 각각의 `Publisher` 들이 도착하는 시간은 다를 수 있기 때문에, 결과로 만들어진 `Flux`는 기존과 같은 순서가 보장되지는 않는다. 
+
+
+> [!Caution]
+> `flatMap` 을 사용한다고 해서 인자로 전달한 함수가 비동기로 실행되는 것은 아니다. 
+> `parallel()` 등의 스케줄러를 사용해야만 한다.
+
+순서를 보장하고 싶다면 두 가지 방법이 있다. 
+
+첫 번째는 `concatMap` 이다. `concatMap` 이 순서를 보장할 수 있는 것은 `Publisher` 를 순차적으로 처리하기 때문이다. `parallel()` 을 사용하더라도 병렬 실행은 되지 않는다(단, 쓰레드는 서로 다른 쓰레드를 사용하게 된다).
+
+두 번째는 `flatMapSequantial()` 이다. `concatMap`과 달리 모든 `Publisher` 의 이벤트를 트리거하는데, 결과를 병합할 때는 순차적으로 병합한다. 
+
+## Merge
+
+여러 개의 `Publisher`를 하나의 `Flux`로 병합하는 오퍼레이션이다. 
+
+병합하는 방법은 `merge()`와 `concat()`이 있다. 이 두 가지의 차이는 위에서 설명했던 `flatMap`과 `concatMap()`와 비슷하게, 인자로 전달한 `publisher` 의 순서를 유지하는지(그리고 `concat` 부류는 이전 작업이 끝난 뒤 실행) 여부에 차이가 있다.
+
+
 ## 테스트 - `StepVerifier`
 
 리액터로 만든 Publisher를 테스트할 때 사용하는 API, `StepVerifier` 가 있다. 이 API를 사용하기 위해서는 `reactor-test` 라이브러리를 의존성으로 걸어야 한다.
