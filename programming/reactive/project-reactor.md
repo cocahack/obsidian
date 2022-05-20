@@ -93,6 +93,246 @@ class FluxCreation {
 
 병합하는 방법은 `merge()`와 `concat()`이 있다. 이 두 가지의 차이는 위에서 설명했던 `flatMap`과 `concatMap()`와 비슷하게, 인자로 전달한 `publisher` 의 순서를 유지하는지(그리고 `concat` 부류는 이전 작업이 끝난 뒤 실행) 여부에 차이가 있다.
 
+## Back Pressure
+
+Back pressure는 subscriber에서 요청 개수를 조절하는 메커니즘이다. Reactive Streams는 기본적으로 publisher가 subscriber로 푸시하는 방식이지만, subscriber가 back pressure를 사용해서 가져올 메시지를 조절하는 pull 방식도 혼용하고 있다. 
+
+Reactor에서는 `request(long)` 메소드로 요청 개수를 조절할 수 있다. Flux, Mono에 포함된 `log()` API 를 이용하면 스트림이 어떻게 흐르는지 자세하게 로그를 찍어볼 수 있는데, 여기에 request가 몇 개 요청되고 있는지 볼 수 있다.
+
+```text
+14:03:33.730 [single-1] INFO reactor.Flux.ConcatArray.1 - onSubscribe(FluxConcatArray.ConcatArraySubscriber)
+14:03:33.731 [single-1] INFO reactor.Flux.ConcatArray.1 - request(256)
+14:03:35.750 [single-1] INFO reactor.Flux.ConcatArray.1 - onNext(A)
+14:03:35.750 [single-1] INFO reactor.Flux.ConcatArray.1 - onNext(B)
+14:03:35.750 [single-1] INFO reactor.Flux.ConcatArray.1 - onNext(C)
+14:03:36.755 [single-1] INFO reactor.Flux.ConcatArray.1 - onNext(D)
+14:03:36.756 [single-1] INFO reactor.Flux.ConcatArray.1 - onNext(E)
+14:03:36.756 [single-1] INFO reactor.Flux.ConcatArray.1 - onNext(F)
+14:03:36.756 [single-1] INFO reactor.Flux.ConcatArray.1 - onComplete()
+```
+
+## 에러 처리
+
+스트림 처리 도중 에러가 발생했을 때, 이를 처리할 수 있는 API를 제공한다. `onErrorXXX` 류의 API가 그것이다. 
+
+예를 들어, 예외가 발생했을 때 아래와 같이 처리할 수 있다.
+
+```java
+class ErrorExample1 {
+
+	// IllegalStateException 이 발생하면 기본 값 2
+	public Mono<Integer> exampleMono(Mono<Integer> mono) {
+		return mono.onErrorReturn(IllegalStateException.class::isInstance, 2);
+	}
+	
+	// 일단 예외가 발생하면 4, 5, 6을 emit
+	public Flux<Integer> exampleFlux(Flux<Integer flux) {
+		return flux.onErrorResume(e -> Flux.just(4, 5, 6));
+	}
+	
+}
+```
+
+Checked exception의 경우는 조금 더 복잡하다. `map()` 과 같은 변환 API에 전달하는 람다식에서는 반드시 checked exception을 처리해야한다. 
+
+가장 직관적인 방법은 `try-catch`로 감싼 다음, Checked Exception을 Unchecked Exception으로 감싸는 것이다. Reactor는 `Exceptions.propagate` 라는 편의 API를 제공한다.
+
+```java
+class ErrorExample2 {
+
+	public Flux<Integer> exampleFlux(Flux<Integer flux) {
+		return flux.map(i -> {
+			try {
+				return add10(i);
+			} catch (Exception e) {
+				throw Exceptions.propagate(e);
+			}
+		})
+	}
+	
+	private int add10(int value) throw Exception {
+		if (value < 0) {
+			throw new Exception();
+		}
+		return value + 10;
+	}
+	
+}
+```
+
+## 컨텍스트 변경 - `publishOn`, `subscribeOn`
+
+> [!Notice]
+> 스프링 공식 블로그에 올라온 [글](https://spring.io/blog/2019/12/13/flight-of-the-flux-3-hopping-threads-and-schedulers)을 바탕으로 작성했습니다.
+
+### `publishOn`
+
+다음과 같은 코드가 작성되어있다고 가정하자.
+
+```java
+@Slf4j
+public PublishOnExample {
+
+	public void exmaple(List<String> firstListOfUrls, List<String> secondListOfUrls) {
+		Flux.fromIterable(firstListOfUrls) //contains A, B and C
+			.map(url -> blockingWebClient.get(url))
+			.subscribe(body -> log.info(Thread.currentThread().getName + " from first list, got " + body));
+
+		Flux.fromIterable(secondListOfUrls) //contains D and E
+			.map(url -> blockingWebClient.get(url))
+			.subscribe(body -> log.info(Thread.currentThread().getName + " from second list, got " + body));
+	}
+}
+```
+
+인자로 URL의 리스트를 받고 하나씩 꺼내 Restful API를 호출하는 코드다. `blockingWebClient.get(url)` 부분은 blocking api를 호출한다고 가정할 때, 위 코드는 하나의 쓰레드를 이용해서 실행하게 된다. 예상되는 출력은 다음과 같다.
+
+```text
+main from first list, got A
+main from first list, got B
+main from first list, got C
+main from second list, got D
+main from second list, got E
+```
+
+Async, non-blocking 코드를 위해서는 블락되는 코드를 별도 쓰레드에 격리해야 한다. 이 때 `publishOn` 을 쓸 수 있다. `publishOn` 의 인자에 `Schduler` 객체를 넘겨주면 코드가 실행되는 컨텍스트를 변경할 수 있다. 
+
+```java
+@Slf4j
+public PublishOnExample {
+
+	public void exmaple(List<String> firstListOfUrls, List<String> secondListOfUrls) {
+		Flux.fromIterable(firstListOfUrls) //contains A, B and C
+			.publishOn(Schedulers.boundedElastic())
+			.map(url -> blockingWebClient.get(url))
+			.subscribe(body -> log.info(Thread.currentThread().getName() + " from first list, got " + body));
+
+		Flux.fromIterable(secondListOfUrls) //contains D and E
+			.publishOn(Schedulers.boundedElastic())
+			.map(url -> blockingWebClient.get(url))
+			.subscribe(body -> log.info(Thread.currentThread().getName() + " from second list, got " + body));
+	}
+}
+```
+
+이렇게 코드를 변경하면 실행 결과는 다음과 같이 바뀐다.
+
+```
+boundedElastic-1 from first list, got A
+boundedElastic-2 from second list, got D
+boundedElastic-1 from first list, got B
+boundedElastic-2 from second list, got E
+boundedElastic-1 from first list, got C
+```
+
+두 개의 Flux가 각자 할당된 쓰레드에서 실행되므로 번갈아가면서 결과가 출력된다. 
+
+`publishOn` 으로 컨텍스트를 변경하면 이후 체이닝으로 작성한 메소드는 모두 그 스케줄러에 의해 계속 실행된다. 중간에 다른 스케줄러로 변경하는 것도 가능하다.
+
+### `subscribeOn`
+
+`publishOn` 은 위에서 봤던 것처럼, 소스에서 들어오는 시그널(`onNext`, `onComplete`, `onError` 등)을 특정 `Scheduler` 에서 publish하는 방법이다.
+
+그런데 위의 예시와 다르게, 직접 조작할 수 없는 외부 API가 `Flux` 나 `Mono`를 반환하는데 코드 작성자가 실수로 publish할 `Scheduler`를 지정하지 않았을 때는 어떻게 업스트림의 쓰레드를 변경할 수 있을까?
+
+이럴 때 사용하는 것이 `subscribeOn` 이다. 이전에 스케줄러를 지정하지 않았더라도 `subscribe` 메소드가 실행될 장소를 변경할 수 있는 것이다.
+
+```java
+@Slf4j
+public SubscribeOnExample {
+
+	final Flux<String> fetchUrls(List<String> urls) {
+	  return Flux.fromIterable(urls)
+		.map(url -> blockingWebClient.get(url)); // 실행 환경이 바뀌지 않는다!
+	}
+
+	public void example(List<String> firstListOfUrls, List<String> secondListOfUrls) {
+		fetchUrls(firstListOfUrls)
+		  .subscribeOn(Schedulers.boundedElastic())
+		  .subscribe(body -> log.info(Thread.currentThread().getName() + " from first list, got " + body));
+
+		fetchUrls(secondListOfUrls)
+		  .subscribeOn(Schedulers.boundedElastic())
+		  .subscribe(body -> log.info(Thread.currentThread().getName() + " from second list, got " + body));
+	}
+
+}
+```
+
+위 코드는 `publishOn` 에서 설명에 사용했던 코드와 동일하게 동작한다.
+
+```
+boundedElastic-1 from first list, got A
+boundedElastic-2 from second list, got D
+boundedElastic-1 from first list, got B
+boundedElastic-2 from second list, got E
+boundedElastic-1 from first list, got C
+```
+
+### `publishOn` 과 `subscribeOn` 을 여러 개 겹치면
+
+결과적으로 `publishOn`은 새로 호출할 때마다 그 아래에 실행될 operation의 스케줄러가 변경되며, `subscribeOn` 은 가장 처음에 호출되는 operation에만 영향을 주고, 가장 마지막에 호출한 `subscribeOn` 의 스케줄러만 사용한다.
+
+```java
+public class ComplexExample {
+	
+
+	private Flux<String> fetchUrls(List<String> urls) {  
+		return Flux.fromIterable(urls)  
+				.map(url -> {  
+					log.info("fetchUrls - {}", url);  
+					return url;  
+				});  
+	}  
+
+	public Flux<String> subscribeOn(List<String> firstListOfUrls) {  
+		return fetchUrls(firstListOfUrls)  
+				.publishOn(newSingle("publishOn-A", true))  
+				.map(s -> {  
+					log.info("after fetch - {}", s);  
+					return s;  
+				})  
+				.publishOn(newSingle("publishOn-B", true))  
+				.doOnNext(s -> log.info("doOnNext - {}", s))  
+				.subscribeOn(newSingle("subscribeOn", true));  
+	}  
+
+	public void subscribeOn2(List<String> firstListOfUrls) {  
+		subscribeOn(firstListOfUrls)  
+				.subscribeOn(newSingle("subscribeOn2", true))  
+				.subscribe(body -> log.info(Thread.currentThread().getName() + " from first list, got " + body));  
+	}
+	
+    public static void main(String[] args) throws InterruptedException {  
+    
+        ComplexExample example = new ComplexExample();  
+  
+        List<String> firstUrls = List.of("A", "B", "C");
+  
+        example.subscribeOn2(firstUrls);  
+  
+        Thread.sleep(300);  
+    }
+}
+
+```
+
+위 코드를 실행한 결과는 다음과 같다.
+
+```
+23:16:15.281 [subscribeOn-2] INFO me.cocahack.reactordemo.ReactorDemoApplication - fetchUrls - A
+23:16:15.282 [subscribeOn-2] INFO me.cocahack.reactordemo.ReactorDemoApplication - fetchUrls - B
+23:16:15.282 [subscribeOn-2] INFO me.cocahack.reactordemo.ReactorDemoApplication - fetchUrls - C
+23:16:15.282 [publishOn-A-4] INFO me.cocahack.reactordemo.ReactorDemoApplication - after fetch - A
+23:16:15.282 [publishOn-A-4] INFO me.cocahack.reactordemo.ReactorDemoApplication - after fetch - B
+23:16:15.282 [publishOn-A-4] INFO me.cocahack.reactordemo.ReactorDemoApplication - after fetch - C
+23:16:15.282 [publishOn-B-3] INFO me.cocahack.reactordemo.ReactorDemoApplication - doOnNext - A
+23:16:15.282 [publishOn-B-3] INFO me.cocahack.reactordemo.ReactorDemoApplication - publishOn-B-3 from first list, got A
+23:16:15.282 [publishOn-B-3] INFO me.cocahack.reactordemo.ReactorDemoApplication - doOnNext - B
+23:16:15.282 [publishOn-B-3] INFO me.cocahack.reactordemo.ReactorDemoApplication - publishOn-B-3 from first list, got B
+23:16:15.282 [publishOn-B-3] INFO me.cocahack.reactordemo.ReactorDemoApplication - doOnNext - C
+23:16:15.282 [publishOn-B-3] INFO me.cocahack.reactordemo.ReactorDemoApplication - publishOn-B-3 from first list, got C
+```
 
 ## 테스트 - `StepVerifier`
 
