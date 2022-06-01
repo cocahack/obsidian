@@ -68,10 +68,15 @@ Consistent hash 알고리즘은 MIT에서 처음 제안했는데, 그 기본 절
 - 단점
 	- 노드가 일시적으로 다운되었을 때의 키 관리 비용은 비쌀 수 있다. [^1]
 
+## Success stories
+
+### Discord[^2]
 
 
 
-- [^1]: https://people.eecs.berkeley.edu/~kubitron/courses/cs262a-F12/lectures/lec22-Dynamo.pptx
+
+[^1]: https://people.eecs.berkeley.edu/~kubitron/courses/cs262a-F12/lectures/lec22-Dynamo.pptx
+[^2]: https://discord.com/blog/how-discord-scaled-elixir-to-5-000-000-concurrent-users
 
 
 
