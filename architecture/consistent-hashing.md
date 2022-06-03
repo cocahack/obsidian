@@ -72,7 +72,9 @@ Consistent hash 알고리즘은 MIT에서 처음 제안했는데, 그 기본 절
 
 ### Discord[^2]
 
+Discord는 consistent hashing을 사용하여 분산 시스템을 구축했다. 처음에는 Ring 자료 구조를 사용하기 위해 C로 작성된 [hash-ring](https://github.com/chrismoos/hash-ring) 프로젝트를 Erlang C Port를 사용했었다. 그러나 세션을 재연결할 때 링을 검색하는 시간이 너무 길어(30초) 문제가 있었다고 한다. hash-ring 프로젝트를 Erlang으로 마이그레이션하고 서로 다른 프로세스가 ring에서 데이터를 넣고 가져오는 작업에서 발생하는 데이터 복사 과정을 제거하여 750ms로 최적화했다고 한다.
 
+[https://github.com/discordapp/fastglobal](https://github.com/discordapp/fastglobal)
 
 
 [^1]: https://people.eecs.berkeley.edu/~kubitron/courses/cs262a-F12/lectures/lec22-Dynamo.pptx
