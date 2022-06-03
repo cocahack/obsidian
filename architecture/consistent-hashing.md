@@ -57,7 +57,7 @@ Consistent hash 알고리즘은 MIT에서 처음 제안했는데, 그 기본 절
 
 가상 노드의 개수가 많아질 수록 키의 분포는 점점 균등해진다. 표준 편차가 작아져서 데이터가 고르게 분포되기 때문이다. 
 
-논문에 따르면 가상 노드의 개수가 100~200개 사이일 때 표준 편차 값은 평균의 5%~10% 사이라고 한다. 가상 노드의 개수를 늘리면 표준 편차는 더 떨어지지만, 가상 노드 데이터를 저장할 공간이 더 많이 필요하므로 이는 trade-off 요소라고 할 수 있다.
+한 블로그 글[^1]에 따르면 가상 노드의 개수가 100~200개 사이일 때 표준 편차 값은 평균의 5%~10% 사이라고 한다. 가상 노드의 개수를 늘리면 표준 편차는 더 떨어지지만, 가상 노드 데이터를 저장할 공간이 더 많이 필요하므로 이는 trade-off 요소라고 할 수 있다.
 
 ## 장단점
 
@@ -66,19 +66,20 @@ Consistent hash 알고리즘은 MIT에서 처음 제안했는데, 그 기본 절
 	- 데이터가 보다 균등하게 배포되므로 수평적 확장이 용이하다.
 	- 핫스팟 키 문제를 줄힌다. 데이터를 균등하게 분배할 수 있기 때문이다.
 - 단점
-	- 노드가 일시적으로 다운되었을 때의 키 관리 비용은 비쌀 수 있다. [^1]
+	- 노드가 일시적으로 다운되었을 때의 키 관리 비용은 비쌀 수 있다. [^2]
 
 ## Success stories
 
-### Discord[^2]
+### Discord[^3]
 
 Discord는 consistent hashing을 사용하여 분산 시스템을 구축했다. 처음에는 Ring 자료 구조를 사용하기 위해 C로 작성된 [hash-ring](https://github.com/chrismoos/hash-ring) 프로젝트를 Erlang C Port를 사용했었다. 그러나 세션을 재연결할 때 링을 검색하는 시간이 너무 길어(30초) 문제가 있었다고 한다. hash-ring 프로젝트를 Erlang으로 마이그레이션하고 서로 다른 프로세스가 ring에서 데이터를 넣고 가져오는 작업에서 발생하는 데이터 복사 과정을 제거하여 750ms로 최적화했다고 한다.
 
 [https://github.com/discordapp/fastglobal](https://github.com/discordapp/fastglobal)
 
 
-[^1]: https://people.eecs.berkeley.edu/~kubitron/courses/cs262a-F12/lectures/lec22-Dynamo.pptx
-[^2]: https://discord.com/blog/how-discord-scaled-elixir-to-5-000-000-concurrent-users
+[^1]:https://tom-e-white.com/2007/11/consistent-hashing.html
+[^2]: https://people.eecs.berkeley.edu/~kubitron/courses/cs262a-F12/lectures/lec22-Dynamo.pptx
+[^3]: https://discord.com/blog/how-discord-scaled-elixir-to-5-000-000-concurrent-users
 
 
 
