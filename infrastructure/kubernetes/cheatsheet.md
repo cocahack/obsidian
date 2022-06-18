@@ -8,13 +8,24 @@
 
 ## 기본 명령어
 
+| command              |              description               | further                                                                    |
+|:-------------------- |:--------------------------------------:|:-------------------------------------------------------------------------- |
+| kubectl get          |           k8s의 리소스 조회            | `-o wide`로 더 자세한 정보                                                 |
+| kubectl run POD_NAME |                POD 시작                | --image 옵션으로 이미지 지정                                               |
+| kubectl describe     |       리소스의 자세한 정보 출력        | kubectl describe RESOURCE_TYPE RESOURCE_NAME                               |
+| kubectl edit         |           POD yaml 파일 수정           |                                                                            |
+| kubectl replace      | 파일에 작성된 리소스를 지우고 새로만듦 | `--force` 옵션으로 강제 삭제 가능. `kubectl replace --force -f nginx.yaml` |
+
+
+### 세부 사항
+
+- `kubectl get`
+	- `--selector` 옵션: 레이블로 자원 검색 가능. (ex. kubectl get pods --selector app=App1)
+	- 
+
 | command              |        description        | further                                      |
 |:-------------------- |:-------------------------:|:-------------------------------------------- |
 | kubectl get          |     k8s의 리소스 조회     | `-o wide`로 더 자세한 정보                   |
-| kubectl run POD_NAME |         POD 시작          | --image 옵션으로 이미지 지정                 |
-| kubectl describe     | 리소스의 자세한 정보 출력 | kubectl describe RESOURCE_TYPE RESOURCE_NAME |
-| kubectl edit         |    POD yaml 파일 수정     |                                              |
-
 
 ## 네임스페이스 관련
 
